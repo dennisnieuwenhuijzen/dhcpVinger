@@ -24,7 +24,7 @@ def procdhcp(pkt):
     data = dict(result.json())
     
     print('Device: ' + data['device'].get('name'))
-    print('Device name: ' + data['device_name'].get('name'))
+    print('Device name: ' + data['manufacturer'].get('name'))
     print('OS: ' + data['operating_system'].get('name'))
 
 
