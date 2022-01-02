@@ -14,7 +14,9 @@ def procdhcp(pkt):
     print(re.sub(r".*param_req_list', \[(.*?)\].*",r'\1',str(pkt['DHCP'].options)))
     dhcpParameters = re.sub(r".*param_req_list', \[(.*?)\].*",r'\1',str(pkt['DHCP'].options)).replace(' ','')
 
-    requestParameters = {'"dhcp_fingerprint":"' + dhcpParameters + '","dhcp_vendor":"dhcpcd-5.5.6"'}
+    requestParameters = {}
+    requestParameters['dhcp_fingerprint'] = dhcpParameters
+    requestParameters['dhcp_vendor'] = 'dhcpcd-5.5.6'
 
     print(requestParameters)
 
