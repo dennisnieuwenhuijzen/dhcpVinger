@@ -16,7 +16,6 @@ def procdhcp(pkt):
 
     requestParameters = {}
     requestParameters['dhcp_fingerprint'] = dhcpParameters
-    requestParameters['dhcp_vendor'] = 'dhcpcd-5.5.6'
 
     print(requestParameters)
 
