@@ -22,7 +22,7 @@ def procdhcp(pkt):
 
     result = requests.get(requestURL, params = requestParameters, headers = requestHeader)
     data = result.json()
-    print(json.dumps(data))
+    print(json.dumps(data, indent = 2))
 
 
 
