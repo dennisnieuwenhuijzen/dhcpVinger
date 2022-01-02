@@ -1,6 +1,7 @@
 from scapy.all import *
 import re
 import requests
+import json
 
 captureInterface = "eth0"
 captureFilter = "port 67"
@@ -21,7 +22,7 @@ def procdhcp(pkt):
 
     result = requests.get(requestURL, params = requestParameters, headers = requestHeader)
     data = result.json()
-    print(data)
+    print(json.dumps(data))
 
 
 
