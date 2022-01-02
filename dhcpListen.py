@@ -1,4 +1,4 @@
-from scapy.all import *
+from scapy import *
 
 captureInterface = "eth0"
 captureFilter = "port 67"
