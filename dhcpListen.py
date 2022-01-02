@@ -19,7 +19,7 @@ def procdhcp(pkt):
 
     print(requestParameters)
 
-    result = requests.get(url = requestURL, params = str(requestParameters), headers = requestHeader)
+    result = requests.get(url = requestURL, params = requestParameters, headers = requestHeader)
 
     print(result.response())
 
