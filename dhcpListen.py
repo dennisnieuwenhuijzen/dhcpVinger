@@ -20,8 +20,8 @@ def procdhcp(pkt):
     print(requestParameters)
 
     result = requests.get(requestURL, params = requestParameters, headers = requestHeader)
-
-    print(result.response())
+    data = result.json()
+    print(data)
 
 
 
