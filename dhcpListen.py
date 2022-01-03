@@ -23,9 +23,11 @@ def procdhcp(pkt):
     result = requests.get(requestURL, params = requestParameters, headers = requestHeader)
     data = dict(result.json())
     
-    print('Device: ' + data['device'].get('name'))
-    print('Device name: ' + data['manufacturer'].get('name'))
-    print('OS: ' + data['operating_system'].get('name'))
+    #print('Device: ' + data['device'].get('name'))
+    #print('Device name: ' + data['manufacturer'].get('name'))
+    #print('OS: ' + data['operating_system'].get('name'))
+
+    print(json.dumps(data, indent = 2))
 
 
 
