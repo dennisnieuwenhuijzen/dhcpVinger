@@ -3,11 +3,21 @@ import re
 import requests
 import json
 
-captureInterface = "eth0"
+captureInterface = "wlan0"
 captureFilter = "port 67"
 requestURL = 'https://api.fingerbank.org/api/v2/combinations/interrogate?key=a259f73be9751dbccdbadbf0e5981696c365b042'
 requestHeader = { 'Content-Type': 'application/json' }
 requestParameters = {}
+
+class vingerResult():
+
+    def __init__(self):
+        self.mac = ''
+        self.fingerprint = ''
+        self.device = ''
+        self.deviceName = ''
+        self.operatingSystem = ''
+
 
 def procdhcp(pkt):
     print(pkt['Ethernet'].src)
@@ -28,6 +38,13 @@ def procdhcp(pkt):
     #print('OS: ' + data['operating_system'].get('name'))
 
     print(json.dumps(data, indent = 2))
+    print('')
+    print('Result:')
+    print('- ' + pkt['Ethernet'].src)
+    vingerObject = vingerResult()
+    vingerObject.mac = pkt['Ethernet'].src.replace(':','')
+    print(vingerObject.__dict__)
+
 
 
 
