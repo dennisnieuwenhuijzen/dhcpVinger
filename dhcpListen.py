@@ -2,6 +2,7 @@ from scapy.all import *
 import re
 import requests
 import json
+import pika
 
 captureInterface = "wlan0"
 captureFilter = "port 67"
@@ -68,6 +69,18 @@ def procdhcp(pkt):
     except:
         pass
     print(vingerObject.__dict__)
+
+
+    connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host='172.19.12.14'))
+    channel = connection.channel()
+
+    channel.queue_declare(queue='endpointQ')
+
+    body = json.dumps(vingerObject.__dict__)
+
+    channel.basic_publish(exchange='', routing_key='endpointQ', body=body)
+    connection.close()
 
 
 
