@@ -16,6 +16,7 @@ class vingerResult():
         self.fingerprint = ''
         self.device = ''
         self.deviceName = ''
+        self.manufacturer = ''
         self.operatingSystem = ''
 
 
@@ -42,7 +43,30 @@ def procdhcp(pkt):
     print('Result:')
     print('- ' + pkt['Ethernet'].src)
     vingerObject = vingerResult()
-    vingerObject.mac = pkt['Ethernet'].src.replace(':','')
+    try:
+        vingerObject.mac = pkt['Ethernet'].src.replace(':','')
+    except:
+        pass
+    try:
+        vingerObject.fingerprint = requestParameters['dhcp_fingerprint']
+    except:
+        pass
+    try:
+        vingerObject.device = data['device'].get('name')
+    except:
+        pass
+    try:
+        vingerObject.deviceName = data['device_name']
+    except:
+        pass
+    try:
+        vingerObject.manufacturer = data['manufacturer'].get('name')
+    except:
+        pass
+    try:
+        vingerObject.operatingSystem = data['operating_system'].get('name')
+    except:
+        pass
     print(vingerObject.__dict__)
 
 
