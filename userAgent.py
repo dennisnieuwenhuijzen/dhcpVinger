@@ -21,10 +21,10 @@ class vingerResult():
 
 
 def prochttp(pkt):
-    print(pkt['IP'].src)
     try:
-        if str(pkt).find('User-Agent'):
+        if re.match(r'.*User-Agent.*',str(pkt)):
             r = re.sub(r'^.*User-Agent: (.*?)\r.*',r'\1',str(pkt))
+            print(pkt['IP'].src)
             print(r)
     except:
         pass
