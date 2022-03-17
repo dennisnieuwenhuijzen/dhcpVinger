@@ -18,16 +18,17 @@ class vingerResult():
         self.manufacturer = ''
         self.operatingSystem = ''
 
-def GET_print(pkt):
+def GET_print(strPkt):
     r = "***************************************GET PACKET****************************************************\n"
-    r += "\n".join(pkt.sprintf("{Raw:%Raw.load%}\n").split(r"\r\n"))
+    r += "\n".join(strPkt.sprintf("{Raw:%Raw.load%}\n").split(r"\r\n"))
     r += "*****************************************************************************************************\n"
     return r
 
 def prochttp(pkt):
     print(pkt['IP'].src)
-    if pkt.find('GET'):
-        return GET_print(pkt)
+    strPkt = str(pkt)
+    if strPkt.find('GET'):
+        return GET_print(strPkt)
 
 #    connection = pika.BlockingConnection(
 #    pika.ConnectionParameters(host='172.19.12.14'))
