@@ -21,7 +21,7 @@ class vingerResult():
 
 def prochttp(pkt):
     print(pkt['IP'].src)
-    print(pkt)
+    print(pkt.__dict__)
 
 #    connection = pika.BlockingConnection(
 #    pika.ConnectionParameters(host='172.19.12.14'))
