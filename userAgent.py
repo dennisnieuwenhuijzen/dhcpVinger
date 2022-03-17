@@ -21,7 +21,14 @@ class vingerResult():
 
 def prochttp(pkt):
     print(pkt['IP'].src)
-    print(pkt.__dict__)
+    counter = 0
+    while True:
+        layer = pkt.getlayer(counter)
+        if layer is None:
+            break
+
+        yield layer
+        counter += 1
 
 #    connection = pika.BlockingConnection(
 #    pika.ConnectionParameters(host='172.19.12.14'))
