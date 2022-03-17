@@ -27,11 +27,11 @@ def get_packet_layers(packet):
 
         yield layer
         counter += 1
-        
+
 def prochttp(pkt):
     print(pkt['IP'].src)
 
-    for layer in get_packet_layers(packet):
+    for layer in get_packet_layers(pkt):
         print (layer.name)
 
 #    connection = pika.BlockingConnection(
