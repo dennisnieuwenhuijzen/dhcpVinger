@@ -23,7 +23,7 @@ class vingerResult():
 def prochttp(pkt):
     print(pkt['IP'].src)
     try:
-        if pkt.find('GET'):
+        if str(pkt).find('GET'):
             print(pkt['HTTP'])
     except:
         pass
