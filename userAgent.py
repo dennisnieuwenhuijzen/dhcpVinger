@@ -5,7 +5,7 @@ import json
 import pika
 
 captureInterface = "eth0"
-captureFilter = "tcp port 80 || udp port 67"
+captureFilter = "tcp port 80"
 
 
 class vingerResult():
@@ -18,21 +18,16 @@ class vingerResult():
         self.manufacturer = ''
         self.operatingSystem = ''
 
-def get_packet_layers(packet):
-    counter = 0
-    while True:
-        layer = packet.getlayer(counter)
-        if layer is None:
-            break
-
-        yield layer
-        counter += 1
+def GET_print(pkt):
+    r = "***************************************GET PACKET****************************************************\n"
+    r += "\n".join(pkt.sprintf("{Raw:%Raw.load%}\n").split(r"\r\n"))
+    r += "*****************************************************************************************************\n"
+    return r
 
 def prochttp(pkt):
     print(pkt['IP'].src)
-
-    for layer in get_packet_layers(pkt):
-        print (layer.name)
+    if pkt.find('GET'):
+        return GET_print(pkt)
 
 #    connection = pika.BlockingConnection(
 #    pika.ConnectionParameters(host='172.19.12.14'))
