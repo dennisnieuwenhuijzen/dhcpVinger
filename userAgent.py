@@ -5,7 +5,7 @@ import json
 import pika
 
 captureInterface = "eth0"
-captureFilter = "port 80"
+captureFilter = "tcp port 80"
 
 
 class vingerResult():
@@ -21,7 +21,7 @@ class vingerResult():
 
 def prochttp(pkt):
     print(pkt['IP'].src)
-    print(pkt['HTTP'])
+    print(pkt)
 
 #    connection = pika.BlockingConnection(
 #    pika.ConnectionParameters(host='172.19.12.14'))

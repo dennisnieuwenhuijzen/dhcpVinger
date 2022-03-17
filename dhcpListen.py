@@ -5,7 +5,7 @@ import json
 import pika
 
 captureInterface = "wlan0"
-captureFilter = "port 67"
+captureFilter = "udp port 67"
 requestURL = 'https://api.fingerbank.org/api/v2/combinations/interrogate?key=a259f73be9751dbccdbadbf0e5981696c365b042'
 requestHeader = { 'Content-Type': 'application/json' }
 requestParameters = {}
