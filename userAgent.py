@@ -5,7 +5,7 @@ import json
 import pika
 
 captureInterface = "eth0"
-captureFilter = "tcp port 80"
+captureFilter = "tcp port 80 || udp port 67"
 
 
 class vingerResult():
