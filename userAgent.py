@@ -18,17 +18,21 @@ class vingerResult():
         self.manufacturer = ''
         self.operatingSystem = ''
 
-
-def prochttp(pkt):
-    print(pkt['IP'].src)
+def get_packet_layers(packet):
     counter = 0
     while True:
-        layer = pkt.getlayer(counter)
+        layer = packet.getlayer(counter)
         if layer is None:
             break
 
         yield layer
         counter += 1
+        
+def prochttp(pkt):
+    print(pkt['IP'].src)
+
+    for layer in get_packet_layers(packet):
+        print (layer.name)
 
 #    connection = pika.BlockingConnection(
 #    pika.ConnectionParameters(host='172.19.12.14'))
